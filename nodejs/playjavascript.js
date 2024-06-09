@@ -28,3 +28,12 @@ const restOperator = (...args) => {
 };
 
 console.log(restOperator(1, 2, 3, 4));
+
+// destructuring
+const printname = ({ name }) => {
+  console.log(name);
+};
+
+const { name, age } = person;
+
+printname(person);
