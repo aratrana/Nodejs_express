@@ -24,6 +24,7 @@ const limiter = rateLimit({
 
 app.use(limiter);
 app.use(helmet());
+app.use(logger("combined"));
 
 // ========== PASSPORT CONFIG!========
 app.use(
