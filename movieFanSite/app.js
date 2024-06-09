@@ -5,6 +5,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var passportConfig = require("./config");
+var rateLimit = require("express-rate-limit");
 
 //==============PASSPORT FILES ========//
 var session = require("express-session");
@@ -15,6 +16,13 @@ var indexRouter = require("./routes/index");
 //var usersRouter = require("./routes/users");
 var helmet = require("helmet");
 var app = express();
+const limiter = rateLimit({
+  windowsMs: 60 * 1000, // keep only 1 minute
+  max: 500,
+  message: "Too many requests",
+});
+
+app.use(limiter);
 app.use(helmet());
 
 // ========== PASSPORT CONFIG!========
